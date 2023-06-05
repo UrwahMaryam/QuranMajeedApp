@@ -16,7 +16,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    ListView lv ;
+    ListView lv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         lv =findViewById(R.id.lv);
         QDH test = new QDH();
         List<String> a = new ArrayList<String>();
-        a = test.GetSurahNames();
+        a = test.getSurahNames();
 
         ArrayAdapter<String> b = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,a);
 
@@ -47,12 +47,9 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("start",start);
                 intent.putExtra("range",range);
 
-
                 startActivity(intent);
             }
         });
-
-
     }
 }
 
@@ -619,7 +616,7 @@ class QDH {
         return surahAyatCount[surahNumber];
     }
 
-    public List<String> GetSurahNames() {
+    public List<String> getSurahNames() {
         List<String> list = new ArrayList<String>();
         for (int index = 0; index < urduSurahNames.length; ++index)
             list.add(englishSurahNames[index]);

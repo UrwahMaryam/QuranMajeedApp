@@ -59,18 +59,17 @@ public class MainActivity1 extends AppCompatActivity {
         second.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int startinput = Integer.parseInt(first.getText().toString());
+                int startInput = Integer.parseInt(first.getText().toString());
 
 
                 QuranArabicText test = new QuranArabicText();
-                String data1=test.GetAyat(start+startinput);
+                String data1=test.getAyat(start+startInput);
 
-                ///////////////////////////////////
                 Intent intent = new Intent(MainActivity1.this, MainActivity2.class);
 
-                String Data2= "This Ayat Not Exist";
+                String Data2= "This verse doesn't exist";
 
-                if(startinput >= (start+range))
+                if(startInput >= (start+range))
                 {
                     intent.putExtra("Ayat", Data2);
                 }
@@ -6437,7 +6436,6 @@ class QuranArabicText {
 
             };
 
-// String[] subset = Arrays.copyOfRange(QuranArabicText, 10, 20);
 
     public String[] GetData(int StartIndex, int EndIndex) {
         List<String> listTemp = new ArrayList<String>();
@@ -6449,7 +6447,7 @@ class QuranArabicText {
 
         return list;
     }
-    public String GetAyat(int StartIndex ) {
+    public String getAyat(int StartIndex ) {
 
         String list = QuranArabicText[StartIndex-1].toString();
 
