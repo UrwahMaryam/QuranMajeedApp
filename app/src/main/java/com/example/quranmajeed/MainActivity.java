@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,19 +36,27 @@ public class MainActivity extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String selectedItem = finalAa.get(position);
-                Intent intent = new Intent(MainActivity.this, MainActivity1.class);
-                intent.putExtra("name", selectedItem);
+                try {
 
-                QDH obj = new QDH();
 
-                int start = obj.getSurahStart(position);
-                int range = obj.getSurahVerses(position);
+                    String selectedItem = finalAa.get(position);
+                    Intent intent = new Intent(MainActivity.this, MainActivity1.class);
+                    intent.putExtra("name", selectedItem);
 
-                intent.putExtra("start",start);
-                intent.putExtra("range",range);
+                    QDH obj = new QDH();
 
-                startActivity(intent);
+                    int start = obj.getSurahStart(position);
+                    int range = obj.getSurahVerses(position);
+
+                    intent.putExtra("start", start);
+                    intent.putExtra("range", range);
+
+                    startActivity(intent);
+                }
+                catch (Exception E)
+                {
+                    Toast.makeText(MainActivity.this, E.toString(), Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
